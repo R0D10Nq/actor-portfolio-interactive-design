@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://r0d10nq.github.io/actor-portfolio-interactive-design/sitemap.xml
