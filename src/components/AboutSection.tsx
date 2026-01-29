@@ -27,13 +27,13 @@ export function AboutSection() {
   const textX = useTransform(scrollYProgress, [0, 0.5], [100, 0]);
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      id="about" 
+      id="about"
       className="relative py-32 md:py-48 overflow-hidden"
     >
       {/* Background number */}
-      <motion.div 
+      <motion.div
         className="absolute top-1/2 left-0 -translate-y-1/2 font-display text-[20rem] md:text-[35rem] font-bold text-[#f5f0e8]/[0.02] leading-none pointer-events-none select-none"
         style={{ x: textX }}
       >
@@ -43,13 +43,13 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Image */}
-          <motion.div 
+          <motion.div
             className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0"
             style={{ y: imageY }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#c45c3e]/20 to-transparent z-10" />
             <div className="absolute inset-0 border border-[#f5f0e8]/10" />
-            
+
             {/* Placeholder photo frame */}
             <div className="w-full h-full bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] flex items-center justify-center">
               <div className="text-center">
@@ -84,8 +84,8 @@ export function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Жизнь на сцене — <br/>
-              <span className="text-[#c45c3e]">это моя история</span>
+              <span className="whitespace-nowrap">Жизнь на&nbsp;сцене&nbsp;—</span>{' '}
+              <span className="text-[#c45c3e] whitespace-nowrap">это моя история</span>
             </motion.h2>
 
             <motion.div
@@ -95,13 +95,13 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p>
-                С детства я знал, что моё место — перед камерой и на сцене. Каждая роль — 
-                это возможность прожить чужую жизнь и рассказать историю, которая найдёт 
+                С детства я знал, что моё место — перед камерой и на сцене. Каждая роль —
+                это возможность про��ить чужую жизнь и рассказать историю, которая найдёт
                 отклик в сердцах зрителей.
               </p>
               <p>
-                За плечами — обучение в ведущих театральных школах Москвы, участие в 
-                независимых кинопроектах и работа в репертуарных театрах. Сейчас активно 
+                За плечами — обучение в ведущих театральных школах Москвы, участие в
+                независимых кинопроектах и работа в репертуарных театрах. Сейчас активно
                 снимаюсь в сериалах и полнометражных фильмах.
               </p>
             </motion.div>
@@ -136,7 +136,7 @@ export function AboutSection() {
               </span>
               <div className="flex flex-wrap gap-2">
                 {organizations.map((org, i) => (
-                  <span 
+                  <span
                     key={i}
                     className="px-4 py-2 border border-[#f5f0e8]/10 text-sm text-[#f5f0e8]/60 hover:border-[#c45c3e] hover:text-[#c45c3e] transition-colors"
                   >

@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -25,20 +25,21 @@ export function HeroSection() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const nameLetters = "АНДРЕЙ СОКОЛОВ".split("");
+  const firstName = "АНДРЕЙ";
+  const lastName = "СОКОЛОВ";
 
   return (
-    <section 
+    <section
       ref={containerRef}
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background with parallax */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 z-0"
         style={{ y, scale }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-transparent to-[#1a1a1a] z-10" />
-        <div 
+        <div
           className="absolute inset-0 opacity-40"
           style={{
             backgroundImage: `radial-gradient(ellipse at ${50 + mousePosition.x * 0.5}% ${50 + mousePosition.y * 0.5}%, #c45c3e 0%, transparent 50%)`,
@@ -51,7 +52,7 @@ export function HeroSection() {
       </motion.div>
 
       {/* Main content */}
-      <motion.div 
+      <motion.div
         className="relative z-10 text-center px-4"
         style={{ opacity }}
       >
@@ -63,33 +64,57 @@ export function HeroSection() {
           transition={{ delay: 0.5, duration: 1 }}
         >
           <span className="w-12 h-[1px] bg-[#c45c3e]" />
-          <span className="text-xs tracking-[0.3em] uppercase text-[#f5f0e8]/60">
-            Актёр театра и кино
+          <span className="text-xs tracking-[0.3em] uppercase text-[#f5f0e8]/60 whitespace-nowrap">
+            Актёр театра и&nbsp;кино
           </span>
           <span className="w-12 h-[1px] bg-[#c45c3e]" />
         </motion.div>
 
-        {/* Name with staggered animation */}
-        <h1 className="font-display text-6xl sm:text-8xl md:text-9xl font-semibold tracking-wider mb-8 overflow-hidden">
-          <span className="flex flex-wrap justify-center">
-            {nameLetters.map((letter, i) => (
-              <motion.span
-                key={i}
-                className={letter === " " ? "w-4 sm:w-8" : "inline-block"}
-                initial={{ y: 100, opacity: 0, rotateX: -90 }}
-                animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                transition={{ 
-                  delay: 0.8 + i * 0.05,
-                  duration: 0.8,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                style={{
-                  transform: `translate(${mousePosition.x * 0.02 * (i % 2 === 0 ? 1 : -1)}px, ${mousePosition.y * 0.02 * (i % 2 === 0 ? 1 : -1)}px)`
-                }}
-              >
-                {letter === " " ? "" : letter}
-              </motion.span>
-            ))}
+        {/* Name with staggered animation - каждое слово как отдельный неразрывный блок */}
+        <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-semibold tracking-wider mb-8 overflow-hidden">
+          <span className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-x-4 sm:gap-x-6 md:gap-x-8">
+            {/* Имя - неразрывный блок */}
+            <span className="whitespace-nowrap flex">
+              {firstName.split("").map((letter, i) => (
+                <motion.span
+                  key={`first-${i}`}
+                  className="inline-block"
+                  initial={{ y: 100, opacity: 0, rotateX: -90 }}
+                  animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                  transition={{
+                    delay: 0.8 + i * 0.05,
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  style={{
+                    transform: `translate(${mousePosition.x * 0.02 * (i % 2 === 0 ? 1 : -1)}px, ${mousePosition.y * 0.02 * (i % 2 === 0 ? 1 : -1)}px)`
+                  }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </span>
+            {/* Фамилия - неразрывный блок */}
+            <span className="whitespace-nowrap flex">
+              {lastName.split("").map((letter, i) => (
+                <motion.span
+                  key={`last-${i}`}
+                  className="inline-block"
+                  initial={{ y: 100, opacity: 0, rotateX: -90 }}
+                  animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                  transition={{
+                    delay: 0.8 + (firstName.length + 1 + i) * 0.05,
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  style={{
+                    transform: `translate(${mousePosition.x * 0.02 * (i % 2 === 0 ? 1 : -1)}px, ${mousePosition.y * 0.02 * (i % 2 === 0 ? 1 : -1)}px)`
+                  }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </span>
           </span>
         </h1>
 

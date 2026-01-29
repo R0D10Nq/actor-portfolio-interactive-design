@@ -38,7 +38,7 @@ export function ContactSection() {
     >
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#c45c3e]/30 to-transparent" />
-      
+
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left side - Info */}
@@ -51,18 +51,18 @@ export function ContactSection() {
               Контакты
             </span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium mb-6">
-              Давайте <br/>
-              <span className="text-[#c45c3e]">поработаем вместе</span>
+              <span className="whitespace-nowrap">Давайте</span>{' '}
+              <span className="text-[#c45c3e] whitespace-nowrap">поработаем вместе</span>
             </h2>
             <p className="text-[#f5f0e8]/60 leading-relaxed mb-10 max-w-md">
-              Открыт для интересных проектов в кино, театре и рекламе. 
-              Свяжитесь со мной напрямую или через моего агента.
+              Открыт для интересных проектов в&nbsp;кино, театре и&nbsp;рекламе.
+              Свяжитесь со&nbsp;мной напрямую или через моего агента.
             </p>
 
             {/* Contact info */}
             <div className="space-y-6 mb-12">
               <motion.a
-                href="mailto:contact@daniilvolkov.ru"
+                href="mailto:contact@andreysokolov.ru"
                 className="flex items-center gap-4 group"
                 data-hover
                 initial={{ opacity: 0, x: -20 }}
@@ -74,7 +74,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-[#f5f0e8]/40 uppercase tracking-wider mb-1">Email</p>
-                  <p className="text-[#f5f0e8] group-hover:text-[#c45c3e] transition-colors">contact@daniilvolkov.ru</p>
+                  <p className="text-[#f5f0e8] group-hover:text-[#c45c3e] transition-colors whitespace-nowrap">contact@andreysokolov.ru</p>
                 </div>
               </motion.a>
 
@@ -127,8 +127,8 @@ export function ContactSection() {
                     data-hover
                     title={social.label}
                   >
-                    <social.icon 
-                      className="w-5 h-5 text-[#f5f0e8]/50 group-hover:text-[#c45c3e] transition-colors" 
+                    <social.icon
+                      className="w-5 h-5 text-[#f5f0e8]/50 group-hover:text-[#c45c3e] transition-colors"
                     />
                   </a>
                 ))}
@@ -228,7 +228,7 @@ export function ContactSection() {
             {/* Decoration */}
             <div className="mt-12 flex items-center gap-4 text-xs text-[#f5f0e8]/30">
               <span className="w-12 h-[1px] bg-[#f5f0e8]/10" />
-              <span>Обычно отвечаю в течение 24 часов</span>
+              <span className="whitespace-nowrap">Обычно отвечаю в&nbsp;течение 24&nbsp;часов</span>
             </div>
           </motion.div>
         </div>

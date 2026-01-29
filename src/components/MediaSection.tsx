@@ -27,15 +27,15 @@ export interface TelegramPost {
 
 // Моковые данные (легко заменить на реальные API вызовы)
 const mockYouTubeVideos: YouTubeVideo[] = [
-  { id: '1', title: 'Как я готовился к роли в "Тени прошлого"', thumbnail: '', publishedAt: '2024-01-15' },
+  { id: '1', title: 'Как я\u00A0готовился к\u00A0роли в\u00A0«Тени прошлого»', thumbnail: '', publishedAt: '2024-01-15' },
   { id: '2', title: 'Закулисье театральной постановки', thumbnail: '', publishedAt: '2024-01-10' },
-  { id: '3', title: 'Q&A: Отвечаю на вопросы подписчиков', thumbnail: '', publishedAt: '2024-01-05' },
+  { id: '3', title: 'Q&A: Отвечаю на\u00A0вопросы подписчиков', thumbnail: '', publishedAt: '2024-01-05' },
 ];
 
 const mockTelegramPosts: TelegramPost[] = [
-  { id: 1, text: 'Сегодня закончили съёмки второго сезона! Спасибо всей команде за невероятную работу 🎬', date: '2024-01-20', views: 15420 },
-  { id: 2, text: 'Премьера спектакля "Чайка" состоится 15 февраля. Билеты уже в продаже!', date: '2024-01-18', views: 12300 },
-  { id: 3, text: 'Новый год — новые проекты. Готов к новым вызовам! 🎭', date: '2024-01-01', views: 18900 },
+  { id: 1, text: 'Сегодня закончили съёмки второго сезона! Спасибо всей команде за\u00A0невероятную работу 🎬', date: '2024-01-20', views: 15420 },
+  { id: 2, text: 'Премьера спектакля «Чайка» состоится 15\u00A0февраля. Билеты уже в\u00A0продаже!', date: '2024-01-18', views: 12300 },
+  { id: 3, text: 'Новый год\u00A0— новые проекты. Готов к\u00A0новым вызовам! 🎭', date: '2024-01-01', views: 18900 },
 ];
 
 // Компонент для YouTube видео
@@ -60,19 +60,19 @@ function YouTubeCard({ video, index }: { video: YouTubeVideo; index: number }) {
             <Play className="w-6 h-6 text-[#f5f0e8] ml-1" fill="currentColor" />
           </div>
         </div>
-        
+
         {/* Overlay on hover */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent"
           animate={{ opacity: isHovered ? 1 : 0.5 }}
         />
-        
+
         {/* Duration placeholder */}
         <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-xs">
           12:34
         </div>
       </div>
-      
+
       <div className="mt-3">
         <h4 className="text-sm font-medium text-[#f5f0e8] group-hover:text-[#c45c3e] transition-colors line-clamp-2">
           {video.title}
@@ -165,10 +165,11 @@ export function MediaSection() {
             Медиа
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium mb-4">
-            Следите за <span className="text-[#c45c3e]">обновлениями</span>
+            <span className="whitespace-nowrap">Следите за</span>{' '}
+            <span className="text-[#c45c3e] whitespace-nowrap">обновлениями</span>
           </h2>
           <p className="text-[#f5f0e8]/50 max-w-xl mx-auto">
-            Последние видео, публикации и новости из социальных сетей
+            Последние видео, публикации и&nbsp;новости из&nbsp;социальных сетей
           </p>
         </motion.div>
 
@@ -189,15 +190,15 @@ export function MediaSection() {
                 <h3 className="font-medium text-[#f5f0e8]">YouTube</h3>
                 <p className="text-xs text-[#f5f0e8]/40">Последние видео</p>
               </div>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="ml-auto text-xs text-[#c45c3e] hover:underline"
                 data-hover
               >
                 Смотреть все →
               </a>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {mockYouTubeVideos.map((video, i) => (
                 <YouTubeCard key={video.id} video={video} index={i} />
@@ -217,14 +218,14 @@ export function MediaSection() {
               </div>
               <div>
                 <h3 className="font-medium text-[#f5f0e8]">Instagram</h3>
-                <p className="text-xs text-[#f5f0e8]/40">@daniil.volkov</p>
+                <p className="text-xs text-[#f5f0e8]/40">@andrey.sokolov</p>
               </div>
             </div>
-            
+
             <InstagramPlaceholder />
-            
-            <a 
-              href="#" 
+
+            <a
+              href="#"
               className="mt-4 flex items-center justify-center gap-2 py-3 border border-[#f5f0e8]/10 hover:border-[#c45c3e] text-sm text-[#f5f0e8]/60 hover:text-[#c45c3e] transition-colors"
               data-hover
             >
@@ -246,18 +247,18 @@ export function MediaSection() {
               <Send className="w-5 h-5 text-[#0088cc]" />
             </div>
             <div>
-              <h3 className="font-medium text-[#f5f0e8]">Telegram канал</h3>
-              <p className="text-xs text-[#f5f0e8]/40">@volkov_actor</p>
+              <h3 className="font-medium text-[#f5f0e8] whitespace-nowrap">Telegram канал</h3>
+              <p className="text-xs text-[#f5f0e8]/40">@sokolov_actor</p>
             </div>
-            <a 
-              href="#" 
+            <a
+              href="#"
               className="ml-auto px-4 py-2 bg-[#0088cc]/10 hover:bg-[#0088cc]/20 text-[#0088cc] text-sm transition-colors"
               data-hover
             >
               Подписаться
             </a>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {mockTelegramPosts.map((post, i) => (
               <TelegramCard key={post.id} post={post} index={i} />
@@ -273,10 +274,10 @@ export function MediaSection() {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <p className="text-xs text-[#f5f0e8]/30 uppercase tracking-widest mb-2">
-            🔧 Готово к интеграции
+            🔧 Готово к&nbsp;интеграции
           </p>
           <p className="text-sm text-[#f5f0e8]/50">
-            Секция готова к подключению реальных API: YouTube Data API, Instagram Basic Display, Telegram Bot API, VK API
+            Секция готова к&nbsp;подключению реальных API: YouTube Data API, Instagram Basic Display, Telegram Bot API, VK&nbsp;API
           </p>
         </motion.div>
       </div>

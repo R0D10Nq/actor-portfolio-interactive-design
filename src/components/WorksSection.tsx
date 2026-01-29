@@ -17,11 +17,11 @@ const works: Work[] = [
   {
     id: 1,
     title: 'Тени прошлого',
-    role: 'Главная роль — Алексей',
+    role: 'Главная роль\u00A0— Алексей',
     year: '2024',
     category: 'film',
     director: 'Андрей Смирнов',
-    description: 'Психологическая драма о человеке, который пытается разобраться в событиях своего прошлого.'
+    description: 'Психологическая драма о\u00A0человеке, который пытается разобраться в\u00A0событиях своего прошлого.'
   },
   {
     id: 2,
@@ -30,16 +30,16 @@ const works: Work[] = [
     year: '2023',
     category: 'theater',
     director: 'Мария Иванова',
-    description: 'Классическая постановка пьесы А.П. Чехова в современной интерпретации.'
+    description: 'Классическая постановка пьесы А.\u00A0П.\u00A0Чехова в\u00A0современной интерпретации.'
   },
   {
     id: 3,
-    title: 'Город на краю',
+    title: 'Город на\u00A0краю',
     role: 'Детектив Марков',
     year: '2024',
     category: 'series',
     director: 'Павел Костомаров',
-    description: 'Детективный сериал о расследовании серии загадочных преступлений.'
+    description: 'Детективный сериал о\u00A0расследовании серии загадочных преступлений.'
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ const works: Work[] = [
     year: '2023',
     category: 'film',
     director: 'Игорь Волков',
-    description: 'Остросюжетная драма о последнем полёте легендарного пилота.'
+    description: 'Остросюжетная драма о\u00A0последнем полёте легендарного пилота.'
   },
   {
     id: 5,
@@ -66,7 +66,7 @@ const works: Work[] = [
     year: '2023',
     category: 'series',
     director: 'Анна Меликян',
-    description: 'Драматический сериал о молодых людях, ищущих своё место в жизни.'
+    description: 'Драматический сериал о\u00A0молодых людях, ищущих своё место в\u00A0жизни.'
   },
 ];
 
@@ -83,14 +83,14 @@ export function WorksSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-  const filteredWorks = activeCategory === 'all' 
-    ? works 
+  const filteredWorks = activeCategory === 'all'
+    ? works
     : works.filter(w => w.category === activeCategory);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="works" 
+      id="works"
       className="relative py-32 md:py-48 bg-gradient-to-b from-[#1a1a1a] via-[#151515] to-[#1a1a1a]"
     >
       {/* Section header */}
@@ -106,7 +106,8 @@ export function WorksSection() {
               Портфолио
             </span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium">
-              Избранные <span className="text-[#c45c3e]">работы</span>
+              <span className="whitespace-nowrap">Избранные</span>{' '}
+              <span className="text-[#c45c3e]">работы</span>
             </h2>
           </div>
 
@@ -116,11 +117,10 @@ export function WorksSection() {
               <button
                 key={cat.value}
                 onClick={() => setActiveCategory(cat.value)}
-                className={`px-4 py-2 text-sm tracking-wider uppercase transition-all duration-300 relative ${
-                  activeCategory === cat.value 
-                    ? 'text-[#f5f0e8]' 
+                className={`px-4 py-2 text-sm tracking-wider uppercase transition-all duration-300 relative ${activeCategory === cat.value
+                    ? 'text-[#f5f0e8]'
                     : 'text-[#f5f0e8]/40 hover:text-[#f5f0e8]/70'
-                }`}
+                  }`}
                 data-hover
               >
                 {cat.label}
@@ -139,7 +139,7 @@ export function WorksSection() {
 
       {/* Works grid */}
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           layout
         >
@@ -192,11 +192,11 @@ export function WorksSection() {
                       {work.title}
                     </h3>
                     <p className="text-sm text-[#f5f0e8]/60 mb-3">{work.role}</p>
-                    
+
                     {/* Expandable description */}
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ 
+                      animate={{
                         height: hoveredWork === work.id ? 'auto' : 0,
                         opacity: hoveredWork === work.id ? 1 : 0
                       }}
